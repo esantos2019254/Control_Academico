@@ -1,0 +1,14 @@
+{
+  "name": "control_academico",
+  "version": "1.0.0",
+  "description": "1ra parte de proyecto Control Académico",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Elmer Santos",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
