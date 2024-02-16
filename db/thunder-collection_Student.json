@@ -1,7 +1,7 @@
 {
     "client": "Thunder Client",
     "collectionName": "Student",
-    "dateExported": "2024-02-16T01:36:09.576Z",
+    "dateExported": "2024-02-16T04:51:59.256Z",
     "version": "1.1",
     "folders": [],
     "requests": [
@@ -28,14 +28,47 @@
             "method": "POST",
             "sortNum": 20000,
             "created": "2024-02-15T21:40:52.020Z",
-            "modified": "2024-02-15T21:43:42.639Z",
+            "modified": "2024-02-16T03:32:45.216Z",
             "headers": [],
             "params": [],
             "body": {
                 "type": "json",
-                "raw": "{\n  \"nombre\": \"Rodrigo\",\n  \"apellido\": \"Garcia\",\n  \"correo\": \"rgarcia@kinal.edu.gt\",\n  \"password\": \"123456\",\n  \"curso1\": \"Matematicas\",\n  \"curso2\": \"Ingles\",\n  \"curso3\": \"Tecnologia\",\n  \"role\": \"STUDENT_ROLE\",\n  \"estado\": true\n}",
+                "raw": "{\n  \"nombre\": \"Elmer\",\n  \"apellido\": \"Santos\",\n  \"correo\": \"esantos@kinal.edu.gt\",\n  \"password\": \"123456\",\n  \"cursos\": [\n    \"65cecc2685e0f3fdb3ef6d49\",\n    \"65ced21685e0f3fdb3ef6d51\"\n    ],\n  \"role\": \"asdf\"\n}",
                 "form": []
             },
+            "tests": []
+        },
+        {
+            "_id": "50e01774-51fb-4714-9838-92e97482e92d",
+            "colId": "b5f5c5de-d9de-48bd-b289-9198681050f9",
+            "containerId": "",
+            "name": "studentsPut",
+            "url": "http://localhost:3000/api/students/65ced75d6948a0c792256dfe",
+            "method": "PUT",
+            "sortNum": 30000,
+            "created": "2024-02-16T04:46:29.570Z",
+            "modified": "2024-02-16T04:50:14.289Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"nombre\": \"Rodrigo\",\n  \"apellido\": \"García\",\n  \"password\": \"123456\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "996d56b2-9788-412f-b71f-2d123620dd7d",
+            "colId": "b5f5c5de-d9de-48bd-b289-9198681050f9",
+            "containerId": "",
+            "name": "studentsDelete",
+            "url": "http://localhost:3000/api/students/65ced75d6948a0c792256dfe",
+            "method": "DELETE",
+            "sortNum": 40000,
+            "created": "2024-02-16T04:50:44.338Z",
+            "modified": "2024-02-16T04:50:58.710Z",
+            "headers": [],
+            "params": [],
             "tests": []
         }
     ]

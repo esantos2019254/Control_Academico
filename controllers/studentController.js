@@ -72,13 +72,13 @@ const studentsPost = async (req, res) => {
 const studentsPut = async (req, res) => {
 
     const { id } = req.params;
-    const { _id, ...resto } = req.body;
+    const { _id, correo, role, estado, ...resto } = req.body;
 
     await Student.findByIdAndUpdate(id, resto);
     const student = await Student.findOne({ _id: id });
 
     res.status(200).json({
-        msg: 'Mascota Actualizada existosamente',
+        msg: 'Estudiante Actualizado existosamente',
         student
     });
 }
@@ -91,7 +91,7 @@ const studentsDelete = async (req, res) => {
     const student = await Student.findOne({ _id: id });
 
     res.status(200).json({
-        msg: 'Mascota eliminada exitosamente',
+        msg: 'Estudiante eliminado exitosamente',
         student
     });
 }
