@@ -1,4 +1,4 @@
-const { Schema, model } = require('mongoose');
+const { Schema, model, default: mongoose } = require('mongoose');
 
 const studentSchema = Schema({
     nombre: {
@@ -11,28 +11,21 @@ const studentSchema = Schema({
     },
     correo: {
         type: String,
-        required: [true, 'El correo es obligatorio']
+        required: [true, 'El correo es obligatorio'],
+        nique: true
     },
     password: {
         type: String,
         required: [true, 'El password es obligatorio']
     },
-    curso1: {
-        type: String,
-        required: [true, 'El curso1 es obligatorio']
-    },
-    curso2: {
-        type: String,
-        required: [true, 'El curso1 es obligatorio']
-    },
-    curso3: {
-        type: String,
-        required: [true, 'El curso1 es obligatorio']
-    },
+    cursos: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Curso'
+    }],
     role: {
         type: String,
-        required: true,
-        enum: ["STUDENT_ROLE"]
+        enum: ['STUDENT_ROLE', 'TEACHER_ROLE'],
+        default: 'STUDENT_ROLE'
     },
     estado: {
         type: Boolean,

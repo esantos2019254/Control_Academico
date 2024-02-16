@@ -1,0 +1,42 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "Student",
+    "dateExported": "2024-02-16T01:36:09.576Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "3db32ee7-464f-4f3e-9b66-aa3f310c0d97",
+            "colId": "b5f5c5de-d9de-48bd-b289-9198681050f9",
+            "containerId": "",
+            "name": "studentsGet",
+            "url": "http://localhost:3000/api/students",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2024-02-15T20:54:43.233Z",
+            "modified": "2024-02-15T20:56:53.572Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "7b8b529d-06a7-4dbd-a7ef-89dea60a842f",
+            "colId": "b5f5c5de-d9de-48bd-b289-9198681050f9",
+            "containerId": "",
+            "name": "studentsPost",
+            "url": "http://localhost:3000/api/students",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2024-02-15T21:40:52.020Z",
+            "modified": "2024-02-15T21:43:42.639Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"nombre\": \"Rodrigo\",\n  \"apellido\": \"Garcia\",\n  \"correo\": \"rgarcia@kinal.edu.gt\",\n  \"password\": \"123456\",\n  \"curso1\": \"Matematicas\",\n  \"curso2\": \"Ingles\",\n  \"curso3\": \"Tecnologia\",\n  \"role\": \"STUDENT_ROLE\",\n  \"estado\": true\n}",
+                "form": []
+            },
+            "tests": []
+        }
+    ]
+}
