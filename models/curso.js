@@ -5,18 +5,10 @@ const cursoSchema = Schema({
         type: String,
         required: [true, 'El nombre es obligatorio']
     },
-    student: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Curso'
-    }],
-    teacher: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Curso'
-    }],
     estado: {
         type: Boolean,
         default: true
-    },
+    }
 });
 
 module.exports = model ('Curso', cursoSchema);

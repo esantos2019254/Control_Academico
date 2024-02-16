@@ -31,13 +31,10 @@ const getCursosById = async (req, res) => {
 }
 
 const cursosPost = async (req, res) => {
-    const { nombre, student, teacher, estado } = req.body;
+    const { nombre } = req.body;
     try {
         const curso = new Curso({ 
-            nombre, 
-            student: [], 
-            teacher: [],
-            estado 
+            nombre
         });
     
         await curso.save();
