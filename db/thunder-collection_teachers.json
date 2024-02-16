@@ -1,0 +1,61 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "teachers",
+    "dateExported": "2024-02-16T16:30:43.460Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "a4531daf-39f2-44bf-a8a2-5ce2f10838ba",
+            "colId": "45ae303b-c873-4b74-a2c0-0aa6be3a4b37",
+            "containerId": "",
+            "name": "teachersGet",
+            "url": "http://localhost:3000/api/teachers",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2024-02-16T16:20:11.763Z",
+            "modified": "2024-02-16T16:20:33.951Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "bd9252a4-54a9-461f-accd-83527bd5ae7d",
+            "colId": "45ae303b-c873-4b74-a2c0-0aa6be3a4b37",
+            "containerId": "",
+            "name": "teachersPost",
+            "url": "http://localhost:3000/api/teachers",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2024-02-16T16:20:42.905Z",
+            "modified": "2024-02-16T16:25:07.263Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"nombre\": \"Kenneth\",\n  \"apellido\": \"Velasquez\",\n  \"correo\": \"kvelasquez@kinal.edu.gt\",\n  \"password\": \"123456\",\n  \"cursos\": [\n    \"65cf658a013e8d9739569475\",\n    \"65cf6586013e8d9739569473\"\n    ]\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "65b97be7-e461-422c-be20-5062f460651d",
+            "colId": "45ae303b-c873-4b74-a2c0-0aa6be3a4b37",
+            "containerId": "",
+            "name": "teachersPut",
+            "url": "http://localhost:3000/api/teachers/65cf8be4fef65bd10312f7c2",
+            "method": "PUT",
+            "sortNum": 30000,
+            "created": "2024-02-16T16:28:49.662Z",
+            "modified": "2024-02-16T16:29:49.286Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"nombre\": \"Kenneth\",\n  \"apellido\": \"Velasquez\",\n  \"correo\": \"kvelasquez@kinal.edu.gt\",\n  \"password\": \"123456\",\n  \"cursos\": [\n    \"65cf658a013e8d9739569475\",\n    \"65cf6586013e8d9739569473\"\n    ]\n}",
+                "form": []
+            },
+            "tests": []
+        }
+    ]
+}

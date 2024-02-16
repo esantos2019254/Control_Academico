@@ -15,7 +15,15 @@ const existeCursoById = async (id='') =>{
     }
 }
 
+const existeTeacherById = async (id='') =>{
+    const existeTeacher = await Curso.findOne({id});
+    if(existeTeacher){
+        throw new Error('El estudiante con el ${id} no existe');
+    }
+}
+
 module.exports = {
     existeStudentById,
-    existeCursoById
+    existeCursoById,
+    existeTeacherById
 }

@@ -43,7 +43,20 @@ const teachersPost = async (req, res) => {
             cursos: []
         });
 
-        await student.save();
+        if (cursos && cursos.length > 0) {
+            for (let _id of cursos) {
+                const curso = await Curso.findById(_id);
+                if (!curso) {
+                    return res.status(400).json({ message: `El curso con ID ${_id} no existe` });
+                }
+                if (teacher.cursos.includes(_id)) {
+                    return res.status(400).json({ message: `El alumno ya está asignado al curso con ID ${_id}` });
+                }
+                teacher.cursos.push(_id);
+            }
+        }
+
+        await teacher.save();
         res.status(200).json({
             teacher
         });
