@@ -1,7 +1,6 @@
 const { response } = require('express');
 
 const Student = require('../models/student');
-const Curso = require('../models/curso');
 
 const studentsGet = async (req, res = response) => {
 
@@ -11,6 +10,12 @@ const studentsGet = async (req, res = response) => {
     const [total, students] = await Promise.all([
         Student.countDocuments(query),
         Student.find(query)
+            .select('nombre')
+            .select('cursos')
+            .populate({
+                path: 'cursos',
+                select: 'nombre'
+            })
             .skip(Number(desde))
             .limit(Number(limite))
     ]);
@@ -34,20 +39,19 @@ const getStudentById = async (req, res) => {
 const studentsPost = async (req, res) => {
     const { nombre, apellido, correo, password, cursos } = req.body;
 
-        const student = new Student({ 
-            nombre, 
-            apellido, 
-            correo, 
-            password, 
-            cursos
-        });
+    const student = new Student({
+        nombre,
+        apellido,
+        correo,
+        password,
+        cursos
+    });
 
-        await student.save();
-        res.status(200).json({
-            student
-        });
-        /*console.error(error);
-        res.status(500).json({ message: 'Error al crear el alumno' });*/
+    await student.save();
+    res.status(200).json({
+        student
+    });
+
 }
 
 const studentsPut = async (req, res) => {
