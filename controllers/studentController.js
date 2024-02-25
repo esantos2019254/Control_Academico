@@ -1,5 +1,5 @@
 const { response } = require('express');
-
+const bcryptjs = require('bcryptjs');
 const Student = require('../models/student');
 
 const studentsGet = async (req, res = response) => {
@@ -14,15 +14,22 @@ const studentsGet = async (req, res = response) => {
             .select('cursos')
             .populate({
                 path: 'cursos',
+                match: { estado: true },
                 select: 'nombre'
             })
             .skip(Number(desde))
             .limit(Number(limite))
     ]);
 
+    const studentCursos = students.map(student => ({
+        _id: student._id,
+        nombre: student.nombre,
+        cursos: student.cursos.map(curso => curso.nombre)
+    }));
+
     res.status(200).json({
         total,
-        students
+        students: studentCursos
     });
 }
 
@@ -47,6 +54,9 @@ const studentsPost = async (req, res) => {
         cursos
     });
 
+    const salt = bcryptjs.genSaltSync();
+    student.password = bcryptjs.hashSync(password, salt);
+
     await student.save();
     res.status(200).json({
         student
@@ -63,7 +73,7 @@ const studentsPut = async (req, res) => {
     const student = await Student.findOne({ _id: id });
 
     res.status(200).json({
-        msg: 'Estudiante Actualizado existosamente',
+        msg: 'Datos Actualizados existosamente',
         student
     });
 }
@@ -76,7 +86,7 @@ const studentsDelete = async (req, res) => {
     const student = await Student.findOne({ _id: id });
 
     res.status(200).json({
-        msg: 'Estudiante eliminado exitosamente',
+        msg: 'Cuenta eliminada exitosamente',
         student
     });
 }

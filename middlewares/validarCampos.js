@@ -49,7 +49,7 @@ const validarCamposTeacher = (req, res, next) =>{
                 return res.status(400).json({ message: `El curso con ID ${_id} no existe` });
             }
             if (teacher.cursos.includes(_id)) {
-                return res.status(400).json({ message: `El alumno ya está asignado al curso con ID ${_id}` });
+                return res.status(400).json({ message: `El maestro ya está asignado al curso con ID ${_id}` });
             }
             teacher.cursos.push(_id);
         }

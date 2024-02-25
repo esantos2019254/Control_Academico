@@ -1,36 +1,60 @@
 const { generarJWT } = require("../helpers/generar-jwt.js");
-const Usuario = require("../models/usuario");
-const bycriptjs = require('bcryptjs');
+const Student = require("../models/student.js");
+const Teacher = require("../models/teacher.js");
+const bcryptjs = require('bcryptjs');
 
 const login = async (req, res) => {
-    const { correo, password} = req.body;
-
-    try{
+    const { correo, password } = req.body;
+    let token;
+    let usuario;
+    try {
         // verificar que el correo exista
-        const usuario = await Usuario.findOne({ correo });
+        const student = await Student.findOne({ correo });
+        const teacher = await Teacher.findOne({ correo });
 
-        console.log(usuario)
-        if(!usuario){
+        if (!student && !teacher) {
             return res.status(400).json({
                 msg: 'El correo no está registrado'
             })
         }
 
-        // verificar si el usuario está activo
-        if(!usuario.estado){
-            return res.status(400).json({
-                msg: 'El usuario no existe en la base de datos'
-            })
-        }
-        // verificar que la contraseña sea la correcta
-        const validPassword = bycriptjs.compareSync(password, usuario.password);
-        if(!validPassword){
-            return res.status(400).json({
-                msg: 'Contraseña incorrecta'
-            })
+        if (student) {
+            // verificar si el usuario está activo
+            if (!student.estado) {
+                return res.status(400).json({
+                    msg: 'El estudiante no existe en la base de datos'
+                });
+            }
+            // verificar que la contraseña sea la correcta
+            const validPasswordS = bcryptjs.compareSync(password, student.password);
+            console.log(password);
+            console.log(student.password);
+            if (!validPasswordS) {
+                return res.status(400).json({
+                    msg: 'Contraseña incorrecta'
+                });
+            }
+            token = await generarJWT(student.id);
+            usuario = student;
         }
 
-        const token = await generarJWT(usuario.id);
+        if (teacher) {
+            // verificar si el usuario está activo
+            if (!teacher.estado) {
+                return res.status(400).json({
+                    msg: 'El usuario no existe en la base de datos'
+                });
+            }
+            // verificar que la contraseña sea la correcta
+            const validPasswordT = bcryptjs.compareSync(password, teacher.password);
+            if (!validPasswordT) {
+                return res.status(400).json({
+                    msg: 'Contraseña incorrecta'
+                });
+            }
+            token = await generarJWT(teacher.id);
+            usuario = teacher;
+        }
 
         res.status(200).json({
             msg: 'Login ok',
@@ -38,7 +62,7 @@ const login = async (req, res) => {
             token
         });
 
-    }catch(e){
+    } catch (e) {
         console.log(e);
         res.status(500).json({
             msg: 'Comuniquese con el admin'

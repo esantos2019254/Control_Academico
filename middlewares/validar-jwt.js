@@ -1,5 +1,6 @@
 const jwt = require("jsonwebtoken");
-const Usuario = require("../models/usuario");
+const Student = require("../models/student");
+const Teacher = require("../models/teacher");
 
 const validarJWT = async (req, res, next) => {
   const token = req.header("x-token");
@@ -14,21 +15,37 @@ const validarJWT = async (req, res, next) => {
     //verificación de token
     const { uid } = jwt.verify(token, process.env.SECRETORPRIVATEKEY);
     //leer el usuario que corresponde al uid
-    const usuario = await Usuario.findById(uid);
+    const student = await Student.findById(uid);
+    const teacher = await Teacher.findById(uid);
     //verificar que el usuario exista.
-    if (!usuario) {
+    if (!student) {
       return res.status(401).json({
-        msg: "Usuario no existe en la base de datos",
+        msg: "Estudiante no existe en la base de datos",
       });
     }
     //verificar si el uid está habilidato.
-    if (!usuario.estado) {
+    if (!student.estado) {
       return res.status(401).json({
-        msg: "Token no válido - usuario con estado:false",
+        msg: "Token no válido - estudiante con estado:false",
       });
     }
 
-    req.usuario = usuario;
+    req.student = student;
+
+    //verificar que el usuario exista.
+    if (!teacher) {
+      return res.status(401).json({
+        msg: "Profesor no existe en la base de datos",
+      });
+    }
+    //verificar si el uid está habilidato.
+    if (!teacher.estado) {
+      return res.status(401).json({
+        msg: "Token no válido - profesor con estado:false",
+      });
+    }
+
+    req.teacher = teacher;
 
     next();
   } catch (e) {

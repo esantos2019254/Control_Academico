@@ -1,7 +1,6 @@
 const { response } = require('express');
-
+const bcryptjs = require('bcryptjs');
 const Teacher = require('../models/teacher');
-const Curso = require('../models/curso');
 
 const teachersGet = async (req, res = response) => {
 
@@ -11,13 +10,26 @@ const teachersGet = async (req, res = response) => {
     const [total, teachers] = await Promise.all([
         Teacher.countDocuments(query),
         Teacher.find(query)
+            .select('nombre')
+            .select('cursos')
+            .populate({
+                path: 'cursos',
+                match: { estado: true },
+                select: 'nombre'
+            })
             .skip(Number(desde))
             .limit(Number(limite))
     ]);
 
+    const teachersCursos = teachers.map(teacher => ({
+        _id: teacher._id,
+        nombre: teacher.nombre,
+        cursos: teacher.cursos.map(curso => curso.nombre)
+    }));
+
     res.status(200).json({
         total,
-        teachers
+        teachers: teachersCursos
     });
 }
 
@@ -41,6 +53,9 @@ const teachersPost = async (req, res) => {
         password,
         cursos
     });
+
+    const salt = bcryptjs.genSaltSync();
+    teacher.password = bcryptjs.hashSync(password, salt);
 
     await teacher.save();
     res.status(200).json({
