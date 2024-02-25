@@ -1,7 +1,7 @@
 {
     "client": "Thunder Client",
     "collectionName": "Teachers",
-    "dateExported": "2024-02-19T02:27:22.760Z",
+    "dateExported": "2024-02-25T20:31:11.728Z",
     "version": "1.1",
     "folders": [],
     "requests": [
@@ -9,7 +9,7 @@
             "_id": "cab8dd49-f239-49c8-bfdf-7c15295adf32",
             "colId": "231c34bd-f7a7-4842-9c29-244c9428bd98",
             "containerId": "",
-            "name": "teacherGet",
+            "name": "verCursos",
             "url": "http://localhost:3000/api/teachers",
             "method": "GET",
             "sortNum": 10000,
@@ -23,52 +23,86 @@
             "_id": "17218fc4-7c6e-4aef-bbb3-8c42442a07fe",
             "colId": "231c34bd-f7a7-4842-9c29-244c9428bd98",
             "containerId": "",
-            "name": "teachersPost",
+            "name": "registerTeacher",
             "url": "http://localhost:3000/api/teachers",
             "method": "POST",
-            "sortNum": 20000,
+            "sortNum": 10625,
             "created": "2024-02-18T23:38:36.395Z",
-            "modified": "2024-02-18T23:39:10.623Z",
+            "modified": "2024-02-24T19:40:03.650Z",
             "headers": [],
             "params": [],
             "body": {
                 "type": "json",
-                "raw": "{\n  \"nombre\": \"Elmer\",\n  \"apellido\": \"Santos\",\n  \"correo\": \"esantos@kinal.edu.gt\",\n  \"password\": \"123456\",\n  \"cursos\": [\n    \"65d28eebe9427b2035fdf72b\",\n    \"65d2908ee9427b2035fdf72f\"\n    ]\n}",
+                "raw": "{\n  \"nombre\": \"Julio\",\n  \"apellido\": \"Jimenez\",\n  \"correo\": \"jjimenez@kinal.edu.gt\",\n  \"password\": \"123456\",\n  \"cursos\": [\n    \"65d28eebe9427b2035fdf72b\",\n    \"65d2908ee9427b2035fdf72f\",\n    \"65d29092e9427b2035fdf731\",\n    \"65d9197d43a399958cfe9094\"\n    ]\n}",
                 "form": []
             },
             "tests": []
         },
         {
-            "_id": "db1bab73-a02c-4743-bfd7-9c829a79719b",
+            "_id": "7eb84d02-8204-4cb6-865d-975ec4a163a3",
             "colId": "231c34bd-f7a7-4842-9c29-244c9428bd98",
             "containerId": "",
-            "name": "teachersPut",
-            "url": "http://localhost:3000/api/teachers/65d2951e65bcb7e9ca1cfa30",
+            "name": "cursosPut",
+            "url": "http://localhost:3000/api/cursos/65d28eebe9427b2035fdf72b",
             "method": "PUT",
-            "sortNum": 30000,
-            "created": "2024-02-18T23:40:10.158Z",
-            "modified": "2024-02-18T23:41:05.062Z",
-            "headers": [],
+            "sortNum": 11250,
+            "created": "2024-02-23T22:33:15.971Z",
+            "modified": "2024-02-25T20:28:53.398Z",
+            "headers": [
+                {
+                    "name": "x-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWRiN2IyYWQwODQ3Yzc2ZjIzOWZlODAiLCJpYXQiOjE3MDg4OTI5MTcsImV4cCI6MTcwODg5NjUxN30.Tqe1MVQMfwImtlL3_hSQXWHRj7kYJ2TG9GyfQsx9A88"
+                }
+            ],
             "params": [],
             "body": {
                 "type": "json",
-                "raw": "{\n  \"nombre\": \"Elmer\",\n  \"apellido\": \"Santos\",\n  \"correo\": \"esantos@kinal.edu.gt\",\n  \"password\": \"123456\",\n  \"cursos\": [\n    \"65d28eebe9427b2035fdf72b\",\n    \"65d2908ee9427b2035fdf72f\"\n    ]\n}",
+                "raw": "{\n  \"nombre\": \"Industriales\"\n}",
                 "form": []
             },
             "tests": []
         },
         {
-            "_id": "348405af-e226-4f0a-86b4-18364beed09a",
+            "_id": "54c7c960-e1ac-4e83-93b9-0ae717436cae",
             "colId": "231c34bd-f7a7-4842-9c29-244c9428bd98",
             "containerId": "",
-            "name": "teachersDelete",
-            "url": "http://localhost:3000/api/teachers/65d2951e65bcb7e9ca1cfa30",
+            "name": "cursosDelete",
+            "url": "http://localhost:3000/api/cursos/65dba31a4520e681028b5698",
             "method": "DELETE",
-            "sortNum": 40000,
-            "created": "2024-02-18T23:41:14.983Z",
-            "modified": "2024-02-18T23:41:22.522Z",
-            "headers": [],
+            "sortNum": 11875,
+            "created": "2024-02-23T22:33:17.482Z",
+            "modified": "2024-02-25T20:29:46.800Z",
+            "headers": [
+                {
+                    "name": "x-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWRiN2IyYWQwODQ3Yzc2ZjIzOWZlODAiLCJpYXQiOjE3MDg4OTI5MTcsImV4cCI6MTcwODg5NjUxN30.Tqe1MVQMfwImtlL3_hSQXWHRj7kYJ2TG9GyfQsx9A88"
+                }
+            ],
             "params": [],
+            "tests": []
+        },
+        {
+            "_id": "0dbb8501-2b19-4ea1-8e22-c7b8e0e41fb4",
+            "colId": "231c34bd-f7a7-4842-9c29-244c9428bd98",
+            "containerId": "",
+            "name": "cursosPost",
+            "url": "http://localhost:3000/api/cursos",
+            "method": "POST",
+            "sortNum": 12500,
+            "created": "2024-02-23T22:33:14.107Z",
+            "modified": "2024-02-25T20:29:14.085Z",
+            "headers": [
+                {
+                    "name": "x-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWRiN2IyYWQwODQ3Yzc2ZjIzOWZlODAiLCJpYXQiOjE3MDg4OTI5MTcsImV4cCI6MTcwODg5NjUxN30.Tqe1MVQMfwImtlL3_hSQXWHRj7kYJ2TG9GyfQsx9A88"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"nombre\": \"Ingles III\"\n}",
+                "form": []
+            },
             "tests": []
         }
     ]

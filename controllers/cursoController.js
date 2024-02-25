@@ -57,7 +57,7 @@ const cursosPut = async (req, res) => {
     const curso = await Curso.findOne({ _id: id });
 
     res.status(200).json({
-        msg: 'Estudiante Actualizado existosamente',
+        msg: 'Curso Actualizado existosamente',
         curso
     });
 }
@@ -70,7 +70,7 @@ const cursosDelete = async (req, res) => {
     const curso = await Curso.findOne({ _id: id });
 
     res.status(200).json({
-        msg: 'Estudiante eliminado exitosamente',
+        msg: 'Curso eliminado exitosamente',
         curso
     });
 }

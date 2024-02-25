@@ -17,35 +17,32 @@ const validarJWT = async (req, res, next) => {
     //leer el usuario que corresponde al uid
     const student = await Student.findById(uid);
     const teacher = await Teacher.findById(uid);
+    let usuario;
     //verificar que el usuario exista.
-    if (!student) {
+    if (!student && !teacher) {
       return res.status(401).json({
-        msg: "Estudiante no existe en la base de datos",
+        msg: "Usuario no existe en la base de datos",
       });
     }
+
     //verificar si el uid está habilidato.
-    if (!student.estado) {
-      return res.status(401).json({
-        msg: "Token no válido - estudiante con estado:false",
-      });
+    if(student){
+      if (!student.estado) {
+        return res.status(401).json({
+          msg: "Token no válido - Estudiante con estado:false",
+        });
+      }
+      req.usuario = student;
     }
 
-    req.student = student;
-
-    //verificar que el usuario exista.
-    if (!teacher) {
-      return res.status(401).json({
-        msg: "Profesor no existe en la base de datos",
-      });
+    if(teacher){
+      if(!teacher.estado){
+        return res.status(401).json({
+          msg: "Token no válido - Profesor con estado:false",
+        });
+      }
+      req.usuario = teacher;
     }
-    //verificar si el uid está habilidato.
-    if (!teacher.estado) {
-      return res.status(401).json({
-        msg: "Token no válido - profesor con estado:false",
-      });
-    }
-
-    req.teacher = teacher;
 
     next();
   } catch (e) {
